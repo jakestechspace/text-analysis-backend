@@ -1,15 +1,10 @@
-function getParams() {
+function getParams(text) {
   const body = {
-    "documents": [
+    documents: [
       {
-        "language": "en",
-        "id": "1",
-        "text": "you are amazing"
-      },
-      {
-        "language": "en",
-        "id": "2",
-        "text": "you are not amazing"
+        language: process.env.LANGUAGE,
+        id: "1",
+        text
       }
     ]
   }
@@ -19,9 +14,10 @@ function getParams() {
   }
 
   const endpoint = "/text/analytics/v3.1-preview.1/sentiment?"
+  const searchParams = new URLSearchParams(urlParams)
 
   return {
-    url: `${process.env.BASE_URL}${endpoint}${new URLSearchParams(urlParams)}`,
+    url: `${process.env.BASE_URL}${endpoint}${searchParams}`,
     method: "POST",
     headers: {
       "Content-Type":"application/json",
