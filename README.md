@@ -4,8 +4,7 @@
 
 Create a file at the project's root named .env and add the following values:
 
-PORT=3000  
-ENV=dev  
+PORT=3000
 LANGUAGE=en  
 
 API_KEY=REPLACE_HERE  
