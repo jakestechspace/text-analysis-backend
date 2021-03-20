@@ -1,14 +1,18 @@
 require('dotenv').config()
 
 const express = require('express')
+const cors = require('cors')
+
 const app = express()
 const port = process.env.PORT
 const limiter = require("./rateLimit")
 
 app.set("view engine", "html")
+
 app.use(express.static(__dirname + '/public'))
 app.use(express.json())
 app.use(limiter)
+app.use(cors({ origin: "*" }))
 
 const makeFetch = require("./makeFetch")
 const getParams = require("./getParams")
