@@ -12,7 +12,7 @@
 
     e.preventDefault()
 
-    fetch("http://localhost:3000/sentiment", {
+    fetch("https://text-analysis-backend.herokuapp.com/sentiment", {
       method: "POST",
       body: JSON.stringify({ text: formInput.value }),
       headers: myHeaders
