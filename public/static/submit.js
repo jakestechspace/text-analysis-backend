@@ -3,13 +3,16 @@
   var form = document.querySelector("#form")
   var resHolder = document.querySelector("#resHolder")
   var formInput = document.querySelector("#input")
-
+ 
   var myHeaders = new Headers();
   myHeaders.append('Content-Type', 'application/json')
 
-  form.addEventListener("submit", function(e) {
+  var submitForm = function(e) {
+    if(e.type === "keydown" && e.key !== "Enter") return
+
     e.preventDefault()
-    fetch("https://text-analysis-backend.herokuapp.com/sentiment", {
+
+    fetch("http://localhost:3000/sentiment", {
       method: "POST",
       body: JSON.stringify({ text: formInput.value }),
       headers: myHeaders
@@ -24,5 +27,8 @@
         resHolder.innerHTML += " - <span>" + data.documents[0].sentiment + "<span><br />"
       }
     })
-  })
+  }
+
+  form.addEventListener("submit", submitForm, false)
+  form.addEventListener("keydown", submitForm, false)
 }()
