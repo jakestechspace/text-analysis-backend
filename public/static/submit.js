@@ -25,6 +25,7 @@
       if(data) {
         resHolder.innerHTML += "<br /><span style='font-weight: bold'>" + formInput.value + "</span>"
         resHolder.innerHTML += " - <span>" + data.documents[0].sentiment + "<span><br />"
+        formInput.value = ""
       }
     })
   }
